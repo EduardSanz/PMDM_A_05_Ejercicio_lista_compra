@@ -66,7 +66,7 @@ public class MainActivity extends AppCompatActivity {
 
     private AlertDialog createProducto() {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("Nuevo Producto a la lista");
+        builder.setTitle(getString(R.string.create_title));
         builder.setCancelable(false);
 
         // Necesitamos un contenido
@@ -105,8 +105,8 @@ public class MainActivity extends AppCompatActivity {
         txtCantidad.addTextChangedListener(textWatcher);
         txtPrecio.addTextChangedListener(textWatcher);
 
-        builder.setNegativeButton("CANCELAR", null);
-        builder.setPositiveButton("CREAR", new DialogInterface.OnClickListener() {
+        builder.setNegativeButton(getString(R.string.btn_negative), null);
+        builder.setPositiveButton(getResources().getString(R.string.btn_positive_create), new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
                 if (!txtNombre.getText().toString().isEmpty()
