@@ -1,6 +1,7 @@
 package com.cieep.a05_ejercicio_lista_compra;
 
 import android.content.DialogInterface;
+import android.content.res.Configuration;
 import android.os.Bundle;
 
 import com.cieep.a05_ejercicio_lista_compra.adapters.ProductosAdapter;
@@ -49,9 +50,18 @@ public class MainActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
         setSupportActionBar(binding.toolbar);
 
+        // Orientación del Movil
+        // getResources().getConfiguration().orientation
+        // PORTRAIT -> Vertical
+        // LANDSCAPE -> HORIZONTAL
+
+        int columnas;
+
+        columnas = getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT ? 1 : 2;
+
         productos = new ArrayList<>();
         adapter = new ProductosAdapter(productos, R.layout.producto_view_holder, this);
-        layoutManager = new GridLayoutManager(this, 1);
+        layoutManager = new GridLayoutManager(this, columnas);
         binding.contentMain.contenedor.setAdapter(adapter);
         binding.contentMain.contenedor.setLayoutManager(layoutManager);
 
